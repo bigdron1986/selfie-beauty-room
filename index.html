@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Selfie Beauty Room — варианты сайта</title>
+<meta name="description" content="Три варианта дизайна сайта для салона Selfie Beauty Room в Ишиме.">
+<style>
+  :root{
+    --bg:#f6f2ec;
+    --card:#fffdfa;
+    --ink:#2b2420;
+    --muted:#7c6d63;
+    --line:#e4d9cc;
+    --accent:#a9613f;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:40px 20px 64px}
+  .eyebrow{
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:14px;
+  }
+  h1{
+    font-family:Georgia,"Times New Roman",serif;font-weight:400;
+    font-size:clamp(30px,7vw,52px);line-height:1.1;margin:0 0 16px;
+  }
+  .lead{color:var(--muted);max-width:52ch;margin:0 0 8px}
+  .hint{font-size:14px;color:var(--muted);margin:0}
+  .grid{display:grid;gap:16px;margin-top:36px}
+  @media(min-width:760px){ .grid{grid-template-columns:repeat(3,1fr)} }
+  .card{
+    display:flex;flex-direction:column;gap:10px;
+    background:var(--card);border:1px solid var(--line);border-radius:6px;
+    padding:22px;text-decoration:none;color:inherit;
+    transition:border-color .2s,transform .2s;
+  }
+  .card:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .swatch{display:flex;gap:6px;margin-bottom:6px}
+  .swatch i{width:26px;height:26px;border-radius:50%;border:1px solid rgba(0,0,0,.08)}
+  .tag{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .name{font-family:Georgia,"Times New Roman",serif;font-size:25px;line-height:1.15}
+  .desc{font-size:14.5px;color:var(--muted);flex:1}
+  .go{font-size:13px;font-weight:600;color:var(--accent);margin-top:6px}
+  .foot{margin-top:36px;font-size:13.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:20px}
+  .foot a{color:var(--muted)}
+  .foot a:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Selfie Beauty Room · Ишим</div>
+  <h1>Три варианта сайта</h1>
+  <p class="lead">Один салон, три разных подхода. Все рабочие, открываются с телефона.</p>
+  <p class="hint">Нажмите на карточку, чтобы посмотреть.</p>
+
+  <div class="grid">
+    <a class="card" href="variant-a.html">
+      <div class="swatch">
+        <i style="background:#faf6ef"></i><i style="background:#b4694a"></i><i style="background:#2e2622"></i>
+      </div>
+      <div class="tag">Вариант A</div>
+      <div class="name">Журнал</div>
+      <div class="desc">Светлый, терракота, крупная антиква. Спокойно и дорого, как разворот журнала.</div>
+      <div class="go">Открыть →</div>
+    </a>
+
+    <a class="card" href="variant-b.html">
+      <div class="swatch">
+        <i style="background:#f7f4ec"></i><i style="background:#5c6b4a"></i><i style="background:#23261f"></i>
+      </div>
+      <div class="tag">Вариант B</div>
+      <div class="name">Витрина</div>
+      <div class="desc">Карточки залов, оливковый акцент. Цены и телефон видны сразу, без прокрутки.</div>
+      <div class="go">Открыть →</div>
+    </a>
+
+    <a class="card" href="variant-c.html">
+      <div class="swatch">
+        <i style="background:#14100e"></i><i style="background:#d3af7d"></i><i style="background:#f4ede4"></i>
+      </div>
+      <div class="tag">Вариант C</div>
+      <div class="name">Тёмный премиум</div>
+      <div class="desc">Графит, золото, фото на весь экран. Самый эффектный из трёх.</div>
+      <div class="go">Открыть →</div>
+    </a>
+  </div>
+
+  <p class="foot">
+    Есть ещё <a href="variant-warm.html">самый первый, тёплый вариант</a> — с него всё начиналось.
+  </p>
+</div>
+</body>
+</html>

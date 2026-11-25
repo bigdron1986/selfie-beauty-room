@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Selfie Beauty Room — салон красоты в Ишиме</title>
+<meta name="description" content="Мужской и женский зал, маникюр. Стрижки, окрашивание, уход за волосами. Ишим, ул. Ф. Энгельса, 26. Онлайн-запись.">
+<!--
+  ДЕМО-МАКЕТ. Перед публикацией заменить:
+  1. Телефон (сейчас заглушка +7 (912) 000-00-00)
+  2. Часы работы
+  3. Цены в блоке «Услуги и цены»
+  4. Блоки .ph — на реальные фото (просто <img src="..."> вместо div.ph)
+  5. В блоке #zapis вставить виджет Dikidi
+-->
+<style>
+  :root{
+    --bg:#fbf7f2;
+    --surface:#f3eae0;
+    --ink:#2e2622;
+    --muted:#7d6d62;
+    --accent:#b4694a;
+    --accent-dark:#96513a;
+    --line:#e6dacd;
+    --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    --wrap:1120px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 20px}
+  [id]{scroll-margin-top:84px}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;margin:0;letter-spacing:-.01em}
+  h1{font-size:clamp(40px,9vw,76px)}
+  h2{font-size:clamp(30px,5.5vw,48px)}
+  h3{font-size:clamp(22px,3.4vw,28px)}
+  p{margin:0}
+  .eyebrow{
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:18px;
+  }
+  .lead{font-size:clamp(16px,2.2vw,19px);color:var(--muted);max-width:46ch}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:15px 28px;border-radius:999px;font-size:15px;font-weight:600;
+    border:1px solid transparent;transition:.2s;cursor:pointer;
+  }
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-ghost{border-color:var(--line);color:var(--ink)}
+  .btn-ghost:hover{background:var(--surface)}
+
+  /* ---------- header ---------- */
+  .top{
+    position:sticky;top:0;z-index:20;
+    background:rgba(251,247,242,.9);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .top-in{display:flex;align-items:center;gap:28px;height:68px}
+  .logo{font-family:var(--serif);font-size:21px;line-height:1;letter-spacing:.02em}
+  .logo span{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+  .nav{display:none;gap:26px;margin-left:auto;font-size:15px;color:var(--muted)}
+  .nav a:hover{color:var(--ink)}
+  .top .btn{margin-left:auto;padding:11px 20px;font-size:14px}
+  @media(min-width:860px){ .nav{display:flex} .top .btn{margin-left:0} }
+
+  /* ---------- photo slots ---------- */
+  .ph{
+    background:
+      radial-gradient(120% 120% at 30% 20%,#e9d8c8 0%,#dcc5b1 55%,#cdb29b 100%);
+    border-radius:3px;position:relative;overflow:hidden;
+    display:grid;place-items:center;text-align:center;
+  }
+  .ph::after{
+    content:"";position:absolute;inset:10px;border:1px solid rgba(255,255,255,.45);
+    border-radius:2px;pointer-events:none;
+  }
+  .ph span{
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:#6d5a4c;opacity:.75;padding:0 20px;
+  }
+  .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+  /* ---------- hero ---------- */
+  .hero{padding:48px 0 56px}
+  .hero-grid{display:grid;gap:36px}
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .hero-note{margin-top:16px;font-size:14px;color:var(--muted)}
+  .hero .ph{aspect-ratio:4/5}
+  @media(min-width:900px){
+    .hero{padding:80px 0 96px}
+    .hero-grid{grid-template-columns:1.05fr .95fr;align-items:center;gap:64px}
+  }
+
+  /* ---------- halls ---------- */
+  .halls{padding:8px 0 72px}
+  .section-head{display:flex;flex-direction:column;gap:16px;margin-bottom:40px}
+  .halls-grid{display:grid;gap:20px}
+  @media(min-width:760px){ .halls-grid{grid-template-columns:repeat(3,1fr)} }
+  .hall{
+    background:#fff;border:1px solid var(--line);border-radius:4px;
+    padding:28px;display:flex;flex-direction:column;gap:12px;
+  }
+  .hall .ph{aspect-ratio:3/2;margin:-28px -28px 24px;border-radius:4px 4px 0 0}
+  .hall p{font-size:15px;color:var(--muted)}
+  .hall .from{margin-top:auto;font-size:14px;color:var(--accent);font-weight:600;letter-spacing:.02em}
+
+  /* ---------- price ---------- */
+  .price{padding:72px 0;background:var(--surface)}
+  .price-grid{display:grid;gap:44px}
+  @media(min-width:860px){ .price-grid{grid-template-columns:repeat(3,1fr);gap:56px} }
+  .price h3{padding-bottom:14px;border-bottom:1px solid #d9c8b8;margin-bottom:6px}
+  .price ul{list-style:none;margin:0;padding:0}
+  .price li{display:flex;gap:12px;align-items:baseline;padding:13px 0;border-bottom:1px dashed #dfcfc0;font-size:16px}
+  .price li .dots{flex:1;border-bottom:1px dotted #c9b6a5;transform:translateY(-4px)}
+  .price li b{font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .price small{display:block;margin-top:10px;font-size:13px;color:var(--muted)}
+
+  /* ---------- master ---------- */
+  .master{padding:80px 0}
+  .master-grid{display:grid;gap:32px;align-items:center}
+  .master .ph{aspect-ratio:1/1;max-width:360px}
+  .master blockquote{margin:0;font-family:var(--serif);font-size:clamp(24px,3.6vw,34px);line-height:1.25}
+  .master .sign{margin-top:22px;font-size:14px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+  @media(min-width:860px){ .master-grid{grid-template-columns:360px 1fr;gap:64px} }
+
+  /* ---------- gallery ---------- */
+  .gallery{padding:0 0 84px}
+  .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .gallery-grid .ph{aspect-ratio:1/1}
+  .gallery-grid .ph:nth-child(1){grid-column:span 2;aspect-ratio:16/10}
+  @media(min-width:760px){
+    .gallery-grid{grid-template-columns:repeat(4,1fr)}
+    .gallery-grid .ph:nth-child(1){grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+  }
+
+  /* ---------- booking ---------- */
+  .booking{padding:80px 0;background:#2e2622;color:#f7efe7}
+  .booking .eyebrow{color:#b9a595}
+  .booking-grid{display:grid;gap:44px}
+  @media(min-width:900px){ .booking-grid{grid-template-columns:1fr 1fr;gap:72px;align-items:start} }
+  .steps{list-style:none;margin:34px 0 0;padding:0;display:grid;gap:20px}
+  .steps li{display:flex;gap:16px;font-size:16px;color:#ddcfc3}
+  .steps b{
+    flex:0 0 30px;height:30px;border-radius:50%;display:grid;place-items:center;
+    border:1px solid #6b584b;font-size:14px;color:#f7efe7;font-family:var(--serif)
+  }
+  .widget{
+    border:1px dashed #7a6657;border-radius:4px;padding:38px 26px;text-align:center;
+    background:rgba(255,255,255,.03);
+  }
+  .widget .t{font-family:var(--serif);font-size:24px;margin-bottom:10px}
+  .widget p{font-size:14px;color:#b9a595;max-width:34ch;margin:0 auto}
+  .widget .btn{margin-top:24px}
+
+  /* ---------- contacts ---------- */
+  .contacts{padding:80px 0}
+  .contacts-grid{display:grid;gap:36px}
+  @media(min-width:860px){ .contacts-grid{grid-template-columns:1fr 1fr;gap:64px} }
+  .info{display:grid;gap:22px;margin-top:28px}
+  .info div{display:grid;gap:4px}
+  .info dt{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .info dd{margin:0;font-size:17px}
+  .info a:hover{color:var(--accent)}
+  .map{aspect-ratio:4/3;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--surface)}
+  .map iframe{display:block;width:100%;height:100%;border:0}
+  @media(min-width:860px){ .map{aspect-ratio:1/1} }
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:32px 0 40px;font-size:14px;color:var(--muted)}
+  .foot-in{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+</style>
+</head>
+<body id="top">
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="logo" href="#top">Selfie<span>Beauty Room</span></a>
+    <nav class="nav">
+      <a href="#halls">Залы</a>
+      <a href="#price">Цены</a>
+      <a href="#master">Мастер</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="btn btn-primary" href="#zapis">Записаться</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Ишим · ул. Ф. Энгельса, 26</div>
+      <h1>Красота,<br>которая вам <em>идёт</em></h1>
+      <p class="lead" style="margin-top:24px">
+        Мужской и женский зал, маникюр. Стрижки, окрашивание и уход за волосами —
+        в одном месте, в центре города.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#zapis">Записаться онлайн</a>
+        <a class="btn btn-ghost" href="#price">Услуги и цены</a>
+      </div>
+      <p class="hero-note">Онлайн-запись работает круглосуточно — без звонков.</p>
+    </div>
+    <div class="ph"><img src="img/6.jpg" alt="Окрашивание: коралловый боб"></div>
+  </div>
+</section>
+
+<section class="halls" id="halls">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Три зала — один салон</div>
+      <h2>Выберите свой</h2>
+    </div>
+    <div class="halls-grid">
+      <article class="hall">
+        <div class="ph"><span>Мужской зал</span></div>
+        <h3>Мужской зал</h3>
+        <p>Стрижки, оформление бороды, камуфляж седины. Быстро, аккуратно, по форме головы.</p>
+        <span class="from">от 600 ₽</span>
+      </article>
+      <article class="hall">
+        <div class="ph"><img src="img/3.jpg" alt="Вечерняя причёска"></div>
+        <h3>Женский зал</h3>
+        <p>Стрижки, окрашивание, блонд, уходы и восстановление волос.</p>
+        <span class="from">от 900 ₽</span>
+      </article>
+      <article class="hall">
+        <div class="ph"><span>Маникюр</span></div>
+        <h3>Маникюр</h3>
+        <p>Аппаратный маникюр, покрытие гель-лаком, укрепление и дизайн.</p>
+        <span class="from">от 800 ₽</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="price" id="price">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Прайс</div>
+      <h2>Услуги и цены</h2>
+    </div>
+    <div class="price-grid">
+      <div>
+        <h3>Мужской зал</h3>
+        <ul>
+          <li>Стрижка <span class="dots"></span> <b>600 ₽</b></li>
+          <li>Стрижка машинкой <span class="dots"></span> <b>400 ₽</b></li>
+          <li>Оформление бороды <span class="dots"></span> <b>500 ₽</b></li>
+          <li>Камуфляж седины <span class="dots"></span> <b>700 ₽</b></li>
+          <li>Стрижка + борода <span class="dots"></span> <b>1 000 ₽</b></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Женский зал</h3>
+        <ul>
+          <li>Женская стрижка <span class="dots"></span> <b>900 ₽</b></li>
+          <li>Укладка <span class="dots"></span> <b>800 ₽</b></li>
+          <li>Окрашивание в один тон <span class="dots"></span> <b>от 2 500 ₽</b></li>
+          <li>Мелирование / блонд <span class="dots"></span> <b>от 3 500 ₽</b></li>
+          <li>Уход / ботокс волос <span class="dots"></span> <b>от 1 500 ₽</b></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Маникюр</h3>
+        <ul>
+          <li>Маникюр без покрытия <span class="dots"></span> <b>800 ₽</b></li>
+          <li>Маникюр + гель-лак <span class="dots"></span> <b>1 300 ₽</b></li>
+          <li>Укрепление ногтей <span class="dots"></span> <b>1 500 ₽</b></li>
+          <li>Снятие покрытия <span class="dots"></span> <b>300 ₽</b></li>
+          <li>Дизайн <span class="dots"></span> <b>от 100 ₽</b></li>
+        </ul>
+      </div>
+    </div>
+    <small>Цены указаны за услугу без учёта длины волос и расхода материалов. Точную стоимость мастер называет до начала работы.</small>
+  </div>
+</section>
+
+<section class="master" id="master">
+  <div class="wrap master-grid">
+    <div class="ph"><span>Фото мастера</span></div>
+    <div>
+      <div class="eyebrow">Мастер</div>
+      <blockquote>«Отличное место, чтобы подстричься и поговорить по душам».</blockquote>
+      <div class="sign">Андрей Ишанов · парикмахер</div>
+      <p class="lead" style="margin-top:22px">
+        Работает с мужскими и женскими стрижками. Если сомневаетесь в форме —
+        подскажет, что подойдёт под тип лица и структуру волос.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Работы</div>
+      <h2>Наши клиенты</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="ph"><img src="img/4.jpg" alt="Причёска с плетением"></div>
+      <div class="ph"><img src="img/1.jpg" alt="Локоны"></div>
+      <div class="ph"><img src="img/2.jpg" alt="Укладка"></div>
+      <div class="ph"><img src="img/5.jpg" alt="Кудри"></div>
+      <div class="ph"><img src="img/7.jpg" alt="Окрашивание"></div>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="zapis">
+  <div class="wrap booking-grid">
+    <div>
+      <div class="eyebrow">Онлайн-запись</div>
+      <h2>Запишитесь<br>за минуту</h2>
+      <ol class="steps">
+        <li><b>1</b> Выберите услугу и зал</li>
+        <li><b>2</b> Выберите свободное время</li>
+        <li><b>3</b> Приходите — напоминание придёт на телефон</li>
+      </ol>
+    </div>
+    <div class="widget">
+      <div class="t">Свободное время на этой неделе</div>
+      <p>Здесь встанет виджет онлайн-записи: клиент сам выбирает услугу, мастера и время, а вы видите запись в календаре.</p>
+      <a class="btn btn-primary" href="tel:+79120000000">Позвонить: +7 (912) 000-00-00</a>
+    </div>
+  </div>
+</section>
+
+<section class="contacts" id="contacts">
+  <div class="wrap contacts-grid">
+    <div>
+      <div class="eyebrow">Контакты</div>
+      <h2>Как нас найти</h2>
+      <dl class="info">
+        <div>
+          <dt>Адрес</dt>
+          <dd>Ишим, ул. Ф. Энгельса, 26</dd>
+        </div>
+        <div>
+          <dt>Часы работы</dt>
+          <dd>Пн–Вс, 9:00–20:00</dd>
+        </div>
+        <div>
+          <dt>Телефон</dt>
+          <dd><a href="tel:+79120000000">+7 (912) 000-00-00</a></dd>
+        </div>
+        <div>
+          <dt>Соцсети</dt>
+          <dd><a href="https://vk.ru/selfiebeautyroom" target="_blank" rel="noopener">ВКонтакте</a></dd>
+        </div>
+      </dl>
+      <div style="margin-top:32px;display:flex;flex-wrap:wrap;gap:12px">
+        <a class="btn btn-primary" href="#zapis">Записаться онлайн</a>
+        <a class="btn btn-ghost" href="https://yandex.ru/maps/org/selfie_beauty_room/58679445517/" target="_blank" rel="noopener">Построить маршрут</a>
+      </div>
+    </div>
+    <div class="map">
+      <iframe
+        src="https://yandex.ru/map-widget/v1/?ol=biz&oid=58679445517&z=17"
+        title="Selfie Beauty Room на карте — Ишим, ул. Ф. Энгельса, 26"
+        loading="lazy"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>© 2026 Selfie Beauty Room · Ишим, ул. Ф. Энгельса, 26</span>
+    <span><a href="#top">Наверх ↑</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
